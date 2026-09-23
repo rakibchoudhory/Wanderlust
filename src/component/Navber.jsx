@@ -28,6 +28,9 @@ const Navber = () => {
           <li>
             <Link href="/admin">Admin</Link>
           </li>
+          <li>
+            <Link href="/add-destination">Add Destination</Link>
+          </li>
         </ul>
 
         {/* Logo */}

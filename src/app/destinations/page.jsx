@@ -1,9 +1,20 @@
+import DestinationCrud from '@/component/DestinationCrud';
 import React from 'react';
 
-const DestinationsPage = () => {
+const DestinationsPage = async() => {
+    const res =await fetch('http://localhost:5000/destinations');
+    const destinations =await res.json();
+    console.log(destinations);
+
     return (
-        <div>
-            Destinations
+        <div className='w-11/12 mx-auto'>
+           destinations
+           <div className=' grid grid-cols-3 gap-5 my-10 '>
+            {
+            destinations.map(destination =><DestinationCrud key={destination._id} destination={destination}></DestinationCrud>
+            )
+           }
+           </div>
         </div>
     );
 };
