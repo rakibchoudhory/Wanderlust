@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import {
   FieldError,
   TextField,
@@ -14,15 +15,19 @@ import React from "react";
 const AddDestinationPage = () => {
 
   const onSubmit = async(e) => {
+
+    const { data: tokenData } = await authClient.token();
+
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
     // console.log(destination);
 
-    const res= await fetch('http://localhost:5000/add-destination',{
+    const res= await fetch(`${process.env.Next_Public_Server_URL}/add-destination`,{
       method: 'POST' ,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${tokenData}`
       },
       body:JSON.stringify(destination)
     });

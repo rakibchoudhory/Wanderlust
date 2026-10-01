@@ -6,7 +6,7 @@ import { FaAngleRight } from "react-icons/fa";
 import { LuMapPin } from "react-icons/lu";
 
 const DestinationCrud = ({ destination }) => {
-  const { destinationName, country, price, duration, imageUrl } = destination;
+  const {_id, destinationName, country, price, duration, imageUrl } = destination;
   return (
 
     <div className=" shadow-[0_0_10px_rgba(0,0,0,0.2)] p-5 rounded-xl">
@@ -39,7 +39,7 @@ const DestinationCrud = ({ destination }) => {
             <CiCalendarDate /> <span>{duration}</span>
           </div>
         <div>
-            <Link  className="flex items-center  text-blue-600 underline" href={''}>BOOK NOW <span><FaAngleRight/></span></Link>
+            <Link  className="flex items-center  text-blue-600 underline" href={`/destinations/${_id}`}>BOOK NOW <span><FaAngleRight/></span></Link>
         </div>
       </div>
     </div>

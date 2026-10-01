@@ -2,7 +2,7 @@ import DestinationCrud from '@/component/DestinationCrud';
 import React from 'react';
 
 const DestinationsPage = async() => {
-    const res =await fetch('http://localhost:5000/destinations');
+    const res =await fetch(`${process.env.Next_Public_Server_URL}/destinations`);
     const destinations =await res.json();
     console.log(destinations);
 
