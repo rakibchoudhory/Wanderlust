@@ -6,7 +6,6 @@ import Link from "next/link";
 import {
   CalendarDays,
   CheckCircle2,
-  Edit3,
   Heart,
   Mail,
   MapPin,
