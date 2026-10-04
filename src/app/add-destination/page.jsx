@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { authClient } from "@/lib/auth-client";
 import {
   FieldError,
@@ -13,36 +13,39 @@ import {
 import React from "react";
 
 const AddDestinationPage = () => {
-
-  const onSubmit = async(e) => {
-
-    const { data: tokenData } = await authClient.token();
-
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
-    // console.log(destination);
+    // console.log(destination, 'destination');
 
-    const res= await fetch(`${process.env.Next_Public_Server_URL}/add-destination`,{
-      method: 'POST' ,
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${tokenData}`
+    const { data: tokenData } = await authClient.token();
+    console.log("TOKEN DATA:", tokenData);
+    console.log("TOKEN TYPE:", typeof tokenData);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/add-destination`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
+        },
+        body: JSON.stringify(destination),
       },
-      body:JSON.stringify(destination)
-    });
+    );
 
     const data = await res.json();
-    console.log(data);
-  
-  }
+    // console.log(data);
+  };
 
   return (
     <div className=" max-w-7xl mx-auto p-10">
+      <h2 className="text-3xl mb-5">Add New Travel Package</h2>
 
-        <h2 className="text-3xl mb-5">Add New Travel Package</h2>
-
-      <form onSubmit={onSubmit} className="p-10 space-y-8 shadow-[0_0_10px_rgba(0,0,0,0.2)] rounded-2xl">
+      <form
+        onSubmit={onSubmit}
+        className="p-10 space-y-8 shadow-[0_0_10px_rgba(0,0,0,0.2)] rounded-2xl"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Destination Name */}
           <div className="md:col-span-2">
@@ -160,9 +163,7 @@ const AddDestinationPage = () => {
           variant="outline"
           className=" rounded-none w-full bg-cyan-500 text-white"
         >
-         <div>
-            Add Travel Package
-         </div>
+          <div>Add Travel Package</div>
         </Button>
       </form>
     </div>

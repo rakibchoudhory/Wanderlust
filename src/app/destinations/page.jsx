@@ -4,7 +4,7 @@ import React from 'react';
 const DestinationsPage = async() => {
     const res =await fetch(`${process.env.Next_Public_Server_URL}/destinations`);
     const destinations =await res.json();
-    console.log(destinations);
+    // console.log(destinations);
 
     return (
         <div className='w-11/12 mx-auto'>
