@@ -10,7 +10,7 @@ const CencelBookig = ({ booking }) => {
   const handleDelete = async () => {
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`${process.env.Next_Public_Server_URL}/booking/${booking.userId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${booking.userId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
