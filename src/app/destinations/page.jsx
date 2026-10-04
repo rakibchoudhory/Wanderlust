@@ -8,7 +8,7 @@ const DestinationsPage = async() => {
 
     return (
         <div className='w-11/12 mx-auto'>
-           destinations
+           <h1 className='text-2xl font-bold my-3'>destinations</h1>
            <div className=' grid grid-cols-3 gap-5 my-10 '>
             {
             destinations.map(destination =><DestinationCrud key={destination._id} destination={destination}></DestinationCrud>
