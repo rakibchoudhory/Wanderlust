@@ -10,7 +10,6 @@ import {
   TextArea,
   Button,
 } from "@heroui/react";
-import React from "react";
 
 const AddDestinationPage = () => {
   const onSubmit = async (e) => {
@@ -20,8 +19,6 @@ const AddDestinationPage = () => {
     // console.log(destination, 'destination');
 
     const { data: tokenData } = await authClient.token();
-    console.log("TOKEN DATA:", tokenData);
-    console.log("TOKEN TYPE:", typeof tokenData);
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/add-destination`,
       {
@@ -35,7 +32,8 @@ const AddDestinationPage = () => {
     );
 
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
+    
   };
 
   return (
