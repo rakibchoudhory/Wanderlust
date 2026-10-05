@@ -9,13 +9,13 @@ const MyBookingPage = async () => {
    const { token } = await auth.api.getToken({
       headers: await headers(),
     });
-    console.log(token);
+    // console.log(token);
 
   const session = await auth.api.getSession({
     headers: await headers(),
   });
   const userId = session?.user?.id;
-  console.log(userId,'userid');
+  // console.log(userId,'userid');
 
   if (!userId) {
     return (

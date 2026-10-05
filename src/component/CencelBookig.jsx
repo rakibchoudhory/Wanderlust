@@ -5,12 +5,11 @@ import { AlertDialog, Button } from "@heroui/react";
 import { XCircle } from "lucide-react";
 
 const CencelBookig = ({ booking }) => {
-  //    console.log(booking,'booking');
 
-  const handleDelete = async () => {
+  const handleDelete = async () => { 
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${booking.userId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/delete?userId=${booking.userId}&bookingId=${booking._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

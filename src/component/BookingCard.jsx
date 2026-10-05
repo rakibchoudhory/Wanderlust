@@ -28,7 +28,7 @@ const BookingCard = ({ destination }) => {
       departureDate: new Date(departureDate),
     };
     // console.log(bookingData ,'bookingData');
-    const res = fetch(`${process.env.Next_Public_Server_URL}/booking`, {
+    const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
       method: 'POST' ,
       headers: {
         'Content-Type': 'application/json',
@@ -37,6 +37,8 @@ const BookingCard = ({ destination }) => {
       body:JSON.stringify(bookingData)
     }
     );
+    
+    console.log(res,'data');
    
     toast.success("Your Booked Successfully!")
 
