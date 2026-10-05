@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
-import { CalendarDays, Eye, MapPin, Ticket, XCircle } from "lucide-react";
+import { CalendarDays, Eye, Ticket } from "lucide-react";
 import CencelBookig from "@/component/CencelBookig";
 
 const MyBookingPage = async () => {
@@ -9,11 +9,13 @@ const MyBookingPage = async () => {
    const { token } = await auth.api.getToken({
       headers: await headers(),
     });
+    console.log(token);
 
   const session = await auth.api.getSession({
     headers: await headers(),
   });
   const userId = session?.user?.id;
+  console.log(userId,'userid');
 
   if (!userId) {
     return (
@@ -50,6 +52,7 @@ const MyBookingPage = async () => {
   }
 
   const bookingBook = await res.json();
+  console.log(bookingBook.length,bookingBook,'booking array');
 
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10">
